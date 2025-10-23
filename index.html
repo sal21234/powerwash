@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S&L Powerwash Pros | Luxury Driveway & Patio Cleaning</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #D4AF37;
+            --gold-light: #F4E4BC;
+            --black: #0A0A0A;
+            --black-light: #1A1A1A;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--black);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--black) 0%, var(--black-light) 100%);
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeUp 1s ease forwards;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 80px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -2px;
+        }
+
+        .hero p {
+            font-size: 24px;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 20px 50px;
+            background: var(--gold);
+            color: var(--black);
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.5);
+        }
+
+        /* Animated Elements */
+        .water-droplet {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(180deg); }
+        }
+
+        /* Services Section */
+        .services {
+            padding: 150px 0;
+            background: var(--black-light);
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .section-title {
+            font-size: 60px;
+            text-align: center;
+            margin-bottom: 80px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .section-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .service-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 30px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+
+        .service-card h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--gold);
+        }
+
+        .service-card p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .price {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-top: 30px;
+        }
+
+        /* Before/After Section */
+        .before-after {
+            padding: 150px 0;
+            background: var(--black);
+            position: relative;
+        }
+
+        .comparison-container {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .image-comparison {
+            position: relative;
+            width: 500px;
+            height: 350px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .image-comparison img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .before-label, .after-label {
+            position: absolute;
+            top: 20px;
+            padding: 10px 20px;
+            background: var(--gold);
+            color: var(--black);
+            font-weight: 600;
+            border-radius: 5px;
+        }
+
+        .before-label { left: 20px; }
+        .after-label { right: 20px; }
+
+        /* Contact Section */
+        .contact {
+            padding: 150px 0;
+            background: var(--black-light);
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            margin-top: 60px;
+        }
+
+        .contact-card {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .contact-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .contact-card h4 {
+            font-size: 24px;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .contact-card p {
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            padding: 50px 0;
+            background: var(--black);
+            text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        /* Scroll Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 50px; }
+            .section-title { font-size: 40px; }
+            .services-grid { grid-template-columns: 1fr; }
+            .contact-info { flex-direction: column; gap: 40px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">S&L POWERWASH PROS</div>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#before-after">Results</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="water-droplet" style="top: 20%; left: 10%;"></div>
+        <div class="water-droplet" style="top: 60%; right: 15%; animation-delay: 2s;"></div>
+        <div class="water-droplet" style="bottom: 20%; left: 50%; animation-delay: 4s;"></div>
+        
+        <div class="hero-content">
+            <h1>Luxury Power Washing</h1>
+            <p>Transform Your Driveway, Patio & Walkways</p>
+            <a href="#contact" class="cta-button">Schedule Service Today</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Our Premium Services</h2>
+            
+            <div class="services-grid">
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">🚗</div>
+                    <h3>Driveway Cleaning</h3>
+                    <p>Remove oil stains, dirt, and grime to restore your driveway's original beauty. Professional equipment ensures deep cleaning without damage.</p>
+                    <div class="price">Starting at $60</div>
+                </div>
+                
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">🚶</div>
+                    <h3>Sidewalk & Walkway Cleaning</h3>
+                    <p>Enhance your home's curb appeal with pristine walkways. Safe, effective cleaning removes years of built-up dirt and mildew.</p>
+                    <div class="price">Add $20</div>
+                </div>
+                
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">🏠</div>
+                    <h3>Patio & Porch Cleaning</h3>
+                    <p>Make your outdoor living spaces shine. Perfect for entertaining or relaxing, our service removes all traces of weathering and wear.</p>
+                    <div class="price">Add $20</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before/After Section -->
+    <section id="before-after" class="before-after">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">See The Transformation</h2>
+            
+            <div class="comparison-container">
+                <div class="image-comparison animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=350&fit=crop" alt="Dirty driveway">
+                    <span class="before-label">BEFORE</span>
+                </div>
+                
+                <div class="image-comparison animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=500&h=350&fit=crop" alt="Clean driveway">
+                    <span class="after-label">AFTER</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Ready to Schedule?</h2>
+            <p style="font-size: 24px; margin-bottom: 60px;">Call us now for fast, friendly service!</p>
+            
+            <div class="contact-info">
+                <div class="contact-card animate-on-scroll">
+                    <h4>Sal</h4>
+                    <p>916-217-8506</p>
+                </div>
+                
+                <div class="contact-card animate-on-scroll">
+                    <h4>Laz</h4>
+                    <p>916-764-2635</p>
+                </div>
+            </div>
+            
+            <a href="tel:9162178506" class="cta-button" style="margin-top: 40px;">Call Now - Get Free Quote</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 S&L Powerwash Pros. Locally owned and operated. Satisfaction guaranteed.</p>
+    </footer>
+
+    <script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Parallax effect for water droplets
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const droplets = document.querySelectorAll('.water-droplet');
+            
+            droplets.forEach((droplet, index) => {
+                const speed = 0.5 + (index * 0.2);
+                droplet.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.5}deg)`;
+            });
+        });
+    </script>
+</body>
+</html>
